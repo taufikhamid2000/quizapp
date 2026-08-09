@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getSubject, subjects } from "@/lib/quiz-data";
+import { TopicsBrowser } from "./components/topics-browser";
 
 export function generateStaticParams() {
   return subjects.map((s) => ({ subject: s.slug }));
@@ -32,21 +33,7 @@ export default async function SubjectPage({ params }: { params: Promise<{ subjec
         <p className="mt-1 text-sm text-foreground/60">{subject.description}</p>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2">
-        {subject.topics.map((topic) => (
-          <Link
-            key={topic.slug}
-            href={`/subjects/${subject.slug}/${topic.slug}`}
-            className="rounded-2xl border border-border bg-muted/40 p-5 transition-colors hover:border-foreground/20"
-          >
-            <h2 className="font-semibold text-foreground">{topic.name}</h2>
-            <p className="mt-1 text-sm text-foreground/60">{topic.description}</p>
-            <p className="mt-3 text-xs text-foreground/40">
-              {topic.questions.length} question{topic.questions.length === 1 ? "" : "s"}
-            </p>
-          </Link>
-        ))}
-      </div>
+      <TopicsBrowser topics={subject.topics} subjectSlug={subject.slug} />
     </div>
   );
 }
