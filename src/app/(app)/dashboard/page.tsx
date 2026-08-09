@@ -81,7 +81,7 @@ export default async function DashboardPage() {
           <div className="space-y-4">
             <p>{dict.dashboard.quickActionsBody}</p>
             <Button asChild variant="primary">
-              <Link href="/admin">{dict.dashboard.viewSubjects}</Link>
+              <Link href="/subjects">{dict.dashboard.viewSubjects}</Link>
             </Button>
           </div>
         </div>{" "}
