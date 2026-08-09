@@ -64,6 +64,7 @@ export const ms: Dictionary = {
     signInToView: "Log masuk untuk melihat maklumat profil anda",
     quickActions: "Tindakan Pantas",
     quickActionsBody: "Ini ialah papan pemuka peribadi anda. Anda boleh menyesuaikannya dengan komponen yang diperlukan.",
+    viewSubjects: "Lihat semua subjek",
     sessionDebug: "Nyahpepijat Sesi",
     sessionExists: "Sesi wujud:",
     userId: "ID Pengguna:",

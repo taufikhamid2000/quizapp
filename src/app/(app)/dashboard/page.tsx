@@ -1,7 +1,9 @@
 import { Metadata } from "next";
+import Link from "next/link";
 import { createServerClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import { getDictionary } from "@/lib/get-dictionary";
+import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "Dashboard - Template",
@@ -76,8 +78,11 @@ export default async function DashboardPage() {
         </div>
         <div className="rounded-2xl border border-border bg-muted/40 p-6">
           <h2 className="text-sm font-medium text-foreground/60 mb-4">{dict.dashboard.quickActions}</h2>
-          <div className="space-y-2">
+          <div className="space-y-4">
             <p>{dict.dashboard.quickActionsBody}</p>
+            <Button asChild variant="primary">
+              <Link href="/admin">{dict.dashboard.viewSubjects}</Link>
+            </Button>
           </div>
         </div>{" "}
         {/* Debug information panel - only visible in development */}

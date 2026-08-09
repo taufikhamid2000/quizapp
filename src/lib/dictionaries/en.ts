@@ -62,6 +62,7 @@ export const en = {
     signInToView: "Sign in to view your profile information",
     quickActions: "Quick Actions",
     quickActionsBody: "This is your personal dashboard. You can customize it with the components you need.",
+    viewSubjects: "View all subjects",
     sessionDebug: "Session Debug",
     sessionExists: "Session exists:",
     userId: "User ID:",
