@@ -20,5 +20,5 @@ export default async function SignUpPage() {
 
   const { t: dict } = await getDictionary();
 
-  return <SignUpForm dict={dict} />;
+  return <SignUpForm dict={{ validation: dict.validation, signup: dict.signup, signin: dict.signin }} />;
 }

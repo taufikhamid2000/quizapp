@@ -21,7 +21,13 @@ type SignUpFormValues = {
 const FIELD_CLASS =
   "rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring";
 
-export default function SignUpForm({ dict }: { dict: Dictionary }) {
+// Only the slices this form actually renders (signin.* for the shared
+// email/password aria-labels) — not the whole Dictionary. See
+// signin-form.tsx for why: dashboard.welcome is a function value, and the
+// full dict can't cross the Server->Client boundary as a prop.
+type SignUpDict = Pick<Dictionary, "validation" | "signup" | "signin">;
+
+export default function SignUpForm({ dict }: { dict: SignUpDict }) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);

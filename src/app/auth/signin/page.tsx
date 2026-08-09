@@ -22,5 +22,5 @@ export default async function SignInPage() {
 
   const { t: dict } = await getDictionary();
 
-  return <SignInForm dict={dict} />;
+  return <SignInForm dict={{ validation: dict.validation, signin: dict.signin }} />;
 }
