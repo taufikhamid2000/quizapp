@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import { Spinner } from "@/components/spinner";
 import { createClient } from "@/utils/supabase/client";
 
 type SignOutButtonProps = {
@@ -50,9 +51,10 @@ export default function SignOutButton({
     <Button
       variant={variant}
       onClick={handleSignOut}
-      className={className}
+      className={`inline-flex items-center gap-2 ${className}`}
       disabled={isLoading}
     >
+      {isLoading && <Spinner />}
       {isLoading ? pendingLabel : label}
     </Button>
   );
