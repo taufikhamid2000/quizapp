@@ -4,7 +4,7 @@ export const ms: Dictionary = {
   nav: {
     brand: "Quiz App",
     dashboard: "Papan Pemuka",
-    subjects: "Subjek",
+    subjects: "Kuiz",
     settings: "Tetapan",
     signOut: "Log keluar",
     signingOut: "Sedang log keluar…",
