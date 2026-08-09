@@ -38,7 +38,7 @@ export default async function TopicQuizPage({
         <p className="mt-1 text-sm text-foreground/60">{topic.description}</p>
       </div>
 
-      <QuizRunner questions={topic.questions} />
+      <QuizRunner questions={topic.questions} subjectSlug={subject.slug} />
     </div>
   );
 }

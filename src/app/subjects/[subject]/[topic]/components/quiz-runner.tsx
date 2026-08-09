@@ -1,7 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import { useLayoutEffect, useState } from "react";
 import type { QuizQuestion } from "@/lib/quiz-data";
+
+const NAV_LINK_CLASS =
+  "cursor-pointer rounded-full border border-border px-5 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted";
 
 function shuffle<T>(items: T[]): T[] {
   const result = [...items];
@@ -26,7 +30,13 @@ function shuffleQuestions(questions: QuizQuestion[]): QuizQuestion[] {
   });
 }
 
-export function QuizRunner({ questions }: { questions: QuizQuestion[] }) {
+export function QuizRunner({
+  questions,
+  subjectSlug,
+}: {
+  questions: QuizQuestion[];
+  subjectSlug: string;
+}) {
   // These pages are statically prerendered, so the server-rendered HTML
   // is fixed at build time. Starting state here has to match that exact
   // markup — shuffling in the initializer would call Math.random() again
@@ -87,13 +97,24 @@ export function QuizRunner({ questions }: { questions: QuizQuestion[] }) {
         <p className="mt-1 text-4xl font-bold text-foreground">
           {score} / {shuffled.length}
         </p>
-        <button
-          type="button"
-          onClick={handleRetake}
-          className="mt-6 cursor-pointer rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-        >
-          Retake
-        </button>
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+          <button
+            type="button"
+            onClick={handleRetake}
+            className="cursor-pointer rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+          >
+            Retake
+          </button>
+          <Link href={`/subjects/${subjectSlug}`} className={NAV_LINK_CLASS}>
+            Choose another topic
+          </Link>
+          <Link href="/subjects" className={NAV_LINK_CLASS}>
+            Choose another subject
+          </Link>
+          <Link href="/dashboard" className={NAV_LINK_CLASS}>
+            Back to dashboard
+          </Link>
+        </div>
 
         <details className="mt-8 text-left">
           <summary className="cursor-pointer text-sm font-medium text-foreground select-none hover:underline">
