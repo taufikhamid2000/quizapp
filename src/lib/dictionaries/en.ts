@@ -2,6 +2,7 @@ export const en = {
   nav: {
     brand: "Quiz App",
     dashboard: "Dashboard",
+    subjects: "Subjects",
     settings: "Settings",
     signOut: "Sign Out",
     signingOut: "Signing out…",

@@ -20,6 +20,7 @@ export function AppShell({ nav, children }: { nav: NavDict; children: React.Reac
 
   const navLinks = [
     { href: "/dashboard", label: nav.dashboard },
+    { href: "/subjects", label: nav.subjects },
     { href: "/settings", label: nav.settings },
   ];
 
@@ -122,7 +123,7 @@ function NavLinks({
   return (
     <>
       {links.map((link) => {
-        const isActive = pathname === link.href;
+        const isActive = pathname === link.href || pathname.startsWith(`${link.href}/`);
         return (
           <Link
             key={link.href}
