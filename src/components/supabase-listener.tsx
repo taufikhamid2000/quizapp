@@ -1,13 +1,24 @@
 "use client";
 import { createClient } from "@/utils/supabase/client";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export function SupabaseListener({ children }: { children: React.ReactNode }) {
   const router = useRouter();
-  const supabase = createClient();
+  // This wraps every page in the root layout, including ones that never
+  // touch auth (/, /subjects/**) — createClient() throws synchronously if
+  // Supabase env vars aren't set, which would otherwise crash the whole
+  // app render, not just the auth-dependent parts of it.
+  const [supabase] = useState(() => {
+    try {
+      return createClient();
+    } catch {
+      return null;
+    }
+  });
 
   useEffect(() => {
+    if (!supabase) return;
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((event) => {
