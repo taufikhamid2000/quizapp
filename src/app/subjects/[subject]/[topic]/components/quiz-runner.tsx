@@ -94,6 +94,38 @@ export function QuizRunner({ questions }: { questions: QuizQuestion[] }) {
         >
           Retake
         </button>
+
+        <details className="mt-8 text-left">
+          <summary className="cursor-pointer text-sm font-medium text-foreground select-none hover:underline">
+            Review your answers
+          </summary>
+          <div className="mt-4 flex flex-col gap-3">
+            {shuffled.map((q, i) => {
+              const answer = answers[i];
+              const isCorrect = answer === q.answerIndex;
+              return (
+                <div
+                  key={q.id}
+                  className={
+                    isCorrect
+                      ? "rounded-xl border border-border bg-background p-4 text-sm"
+                      : "rounded-xl border border-destructive/40 bg-destructive/5 p-4 text-sm"
+                  }
+                >
+                  <p className="font-medium text-foreground">
+                    {i + 1}. {q.question}
+                  </p>
+                  <p className={`mt-1 ${isCorrect ? "text-primary" : "text-destructive"}`}>
+                    Your answer: {answer !== null ? q.options[answer] : "Not answered"} {isCorrect ? "✓" : "✗"}
+                  </p>
+                  {!isCorrect && (
+                    <p className="mt-1 text-foreground/60">Correct answer: {q.options[q.answerIndex]}</p>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </details>
       </div>
     );
   }
