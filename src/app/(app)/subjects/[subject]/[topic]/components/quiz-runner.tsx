@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useLayoutEffect, useState } from "react";
 import type { QuizQuestion } from "@/lib/quiz-data";
+import { ChangeRequestForm } from "@/components/change-request-form";
 
 const NAV_LINK_CLASS =
   "cursor-pointer rounded-full border border-border px-5 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted";
@@ -33,9 +34,15 @@ function shuffleQuestions(questions: QuizQuestion[]): QuizQuestion[] {
 export function QuizRunner({
   questions,
   subjectSlug,
+  subjectName,
+  topicSlug,
+  topicName,
 }: {
   questions: QuizQuestion[];
   subjectSlug: string;
+  subjectName: string;
+  topicSlug: string;
+  topicName: string;
 }) {
   // These pages are statically prerendered, so the server-rendered HTML
   // is fixed at build time. Starting state here has to match that exact
@@ -179,6 +186,23 @@ export function QuizRunner({
           })}
         </div>
       </div>
+
+      <details key={question.id} className="text-sm">
+        <summary className="cursor-pointer text-foreground/50 select-none hover:text-foreground/80">
+          Something wrong with this question?
+        </summary>
+        <div className="mt-3 rounded-xl border border-border bg-muted/40 p-4">
+          <ChangeRequestForm
+            subjectSlug={subjectSlug}
+            subjectName={subjectName}
+            topicSlug={topicSlug}
+            topicName={topicName}
+            questionId={question.id}
+            questionText={question.question}
+          />
+        </div>
+      </details>
+
       <div className="flex justify-between">
         <button
           type="button"
