@@ -1,0 +1,8 @@
+# Minimal config so the Supabase CLI recognizes this as a linked
+# project — only used for `supabase link` / `supabase db push` in CI
+# (.github/workflows/deploy-migrations.yml). Nothing here runs a local
+# dev stack; this project doesn't use `supabase start`.
+project_id = "quizapp"
+
+[db]
+major_version = 15
