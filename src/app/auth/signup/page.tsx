@@ -20,5 +20,11 @@ export default async function SignUpPage() {
 
   const { t: dict } = await getDictionary();
 
-  return <SignUpForm dict={{ validation: dict.validation, signup: dict.signup, signin: dict.signin }} />;
+  return (
+    <SignUpForm
+      brand={dict.nav.brand}
+      dict={{ validation: dict.validation, signup: dict.signup, signin: dict.signin }}
+      authDict={dict.auth}
+    />
+  );
 }

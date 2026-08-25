@@ -31,7 +31,7 @@ describe("SignUp Form", () => {
   });
 
   test("renders sign up form with all fields", () => {
-    render(<SignUpForm dict={en} />);
+    render(<SignUpForm brand={en.nav.brand} dict={en} authDict={en.auth} />);
 
     // Check form elements exist
     expect(screen.getByLabelText(/First Name/i)).toBeInTheDocument();
@@ -44,7 +44,7 @@ describe("SignUp Form", () => {
   });
 
   test("validates required fields", async () => {
-    render(<SignUpForm dict={en} />);
+    render(<SignUpForm brand={en.nav.brand} dict={en} authDict={en.auth} />);
 
     const user = userEvent.setup();
 
@@ -72,7 +72,7 @@ describe("SignUp Form", () => {
     signUp.mockResolvedValueOnce({ error: null });
     signInWithPassword.mockResolvedValueOnce({ error: null });
 
-    render(<SignUpForm dict={en} />);
+    render(<SignUpForm brand={en.nav.brand} dict={en} authDict={en.auth} />);
 
     const user = userEvent.setup();
 
@@ -115,7 +115,7 @@ describe("SignUp Form", () => {
       error: { message: "This email is already registered" },
     });
 
-    render(<SignUpForm dict={en} />);
+    render(<SignUpForm brand={en.nav.brand} dict={en} authDict={en.auth} />);
 
     const user = userEvent.setup();
 

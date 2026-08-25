@@ -30,7 +30,7 @@ describe("SignIn Form", () => {
   });
 
   test("renders sign in form with all fields", () => {
-    render(<SignInForm dict={en} />);
+    render(<SignInForm brand={en.nav.brand} dict={en} authDict={en.auth} />);
 
     // Check form elements exist
     expect(screen.getByLabelText(/Email/i)).toBeInTheDocument();
@@ -41,7 +41,7 @@ describe("SignIn Form", () => {
   });
 
   test("validates required fields", async () => {
-    render(<SignInForm dict={en} />);
+    render(<SignInForm brand={en.nav.brand} dict={en} authDict={en.auth} />);
 
     const user = userEvent.setup();
 
@@ -62,7 +62,7 @@ describe("SignIn Form", () => {
     // Mock the successful sign in response
     signInWithPassword.mockResolvedValueOnce({ error: null });
 
-    render(<SignInForm dict={en} />);
+    render(<SignInForm brand={en.nav.brand} dict={en} authDict={en.auth} />);
 
     const user = userEvent.setup();
 
@@ -91,7 +91,7 @@ describe("SignIn Form", () => {
       error: { message: "Invalid login credentials" },
     });
 
-    render(<SignInForm dict={en} />);
+    render(<SignInForm brand={en.nav.brand} dict={en} authDict={en.auth} />);
 
     const user = userEvent.setup();
 

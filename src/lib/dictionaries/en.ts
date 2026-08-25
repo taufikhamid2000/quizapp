@@ -9,6 +9,13 @@ export const en = {
     openMenu: "Open menu",
     closeMenu: "Close menu",
   },
+  // Shared by the left branding panel on /auth/signin and /auth/signup
+  // (components/auth-branding-panel.tsx).
+  auth: {
+    tagline: "Test yourself, subject by subject.",
+    features: ["Subjects → topics → quizzes", "No account needed to play", "Optional account to track progress"],
+    footnote: "Practice quizzes, one topic at a time.",
+  },
   validation: {
     emailInvalid: "Please enter a valid email",
     passwordMin: "Password must be at least 6 characters",

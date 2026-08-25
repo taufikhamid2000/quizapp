@@ -44,7 +44,7 @@ describe("Authentication Flow", () => {
     signInWithPassword.mockResolvedValueOnce({ error: null });
 
     // Step 3: Render signup form and fill it out
-    const { unmount } = render(<SignUpForm dict={en} />);
+    const { unmount } = render(<SignUpForm brand={en.nav.brand} dict={en} authDict={en.auth} />);
     const user = userEvent.setup();
 
     await user.type(screen.getByLabelText(/First Name/i), testUser.firstName);
@@ -76,7 +76,7 @@ describe("Authentication Flow", () => {
     signInWithPassword.mockResolvedValueOnce({ error: null });
 
     // Step 6: Render login form and fill it out
-    render(<SignInForm dict={en} />);
+    render(<SignInForm brand={en.nav.brand} dict={en} authDict={en.auth} />);
 
     await user.type(screen.getByLabelText(/Email/i), testUser.email);
     await user.type(screen.getByLabelText("Password"), testUser.password);

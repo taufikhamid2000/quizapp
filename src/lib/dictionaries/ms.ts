@@ -11,6 +11,11 @@ export const ms: Dictionary = {
     openMenu: "Buka menu",
     closeMenu: "Tutup menu",
   },
+  auth: {
+    tagline: "Uji diri anda, subjek demi subjek.",
+    features: ["Subjek → topik → kuiz", "Tiada akaun diperlukan untuk bermain", "Akaun pilihan untuk jejak kemajuan"],
+    footnote: "Latih kuiz, satu topik pada satu masa.",
+  },
   validation: {
     emailInvalid: "Sila masukkan e-mel yang sah",
     passwordMin: "Kata laluan mestilah sekurang-kurangnya 6 aksara",
