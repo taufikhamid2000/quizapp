@@ -9,18 +9,6 @@ export const en = {
     openMenu: "Open menu",
     closeMenu: "Close menu",
   },
-  home: {
-    title: "Test yourself, subject by subject",
-    subtitle: "Pick a subject, pick a topic, take the quiz — no account needed to play.",
-    browseSubjects: "Browse subjects",
-    signIn: "Sign In",
-    signUp: "Sign Up",
-    featuresTitle: "Features",
-    feature1: "Subjects → topics → quizzes, defined right in the code",
-    feature2: "No database for quiz content — just data in the repo",
-    feature3: "Tailwind CSS design system",
-    feature4: "Optional account (Supabase) for the dashboard/settings area",
-  },
   validation: {
     emailInvalid: "Please enter a valid email",
     passwordMin: "Password must be at least 6 characters",

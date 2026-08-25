@@ -11,18 +11,6 @@ export const ms: Dictionary = {
     openMenu: "Buka menu",
     closeMenu: "Tutup menu",
   },
-  home: {
-    title: "Uji diri anda, subjek demi subjek",
-    subtitle: "Pilih subjek, pilih topik, jawab kuiz — tiada akaun diperlukan untuk bermain.",
-    browseSubjects: "Lihat subjek",
-    signIn: "Log Masuk",
-    signUp: "Daftar",
-    featuresTitle: "Ciri-ciri",
-    feature1: "Subjek → topik → kuiz, ditakrifkan terus dalam kod",
-    feature2: "Tiada pangkalan data untuk kandungan kuiz — hanya data dalam repo",
-    feature3: "Sistem reka bentuk Tailwind CSS",
-    feature4: "Akaun pilihan (Supabase) untuk kawasan papan pemuka/tetapan",
-  },
   validation: {
     emailInvalid: "Sila masukkan e-mel yang sah",
     passwordMin: "Kata laluan mestilah sekurang-kurangnya 6 aksara",
