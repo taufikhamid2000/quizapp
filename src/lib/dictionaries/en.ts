@@ -6,6 +6,7 @@ export const en = {
     settings: "Settings",
     signOut: "Sign Out",
     signingOut: "Signing out…",
+    signIn: "Sign in",
     openMenu: "Open menu",
     closeMenu: "Close menu",
   },

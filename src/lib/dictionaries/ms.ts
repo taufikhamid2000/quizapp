@@ -8,6 +8,7 @@ export const ms: Dictionary = {
     settings: "Tetapan",
     signOut: "Log keluar",
     signingOut: "Sedang log keluar…",
+    signIn: "Log masuk",
     openMenu: "Buka menu",
     closeMenu: "Tutup menu",
   },

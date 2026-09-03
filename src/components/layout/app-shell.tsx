@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import SignOutButton from "@/components/auth/sign-out-button";
+import { Button } from "@/components/ui/button";
 import { LogoMark } from "@/components/logo-mark";
 import type { Dictionary } from "@/lib/dictionaries/en";
 
@@ -15,7 +16,15 @@ type NavDict = Dictionary["nav"];
 // hamburger) below that. Only wraps the authenticated (app) route group —
 // the public home page and auth pages render their own minimal chrome
 // instead, same split DuitDuit uses between its AppShell and /login.
-export function AppShell({ nav, children }: { nav: NavDict; children: React.ReactNode }) {
+export function AppShell({
+  nav,
+  isSignedIn,
+  children,
+}: {
+  nav: NavDict;
+  isSignedIn: boolean;
+  children: React.ReactNode;
+}) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
@@ -70,12 +79,22 @@ export function AppShell({ nav, children }: { nav: NavDict; children: React.Reac
           </Link>
         </div>
 
-        <SignOutButton
-          variant="ghost"
-          className="cursor-pointer text-sm text-[var(--nav-fg-muted)] underline-offset-4 transition-colors hover:text-destructive hover:underline"
-          label={nav.signOut}
-          pendingLabel={nav.signingOut}
-        />
+        {isSignedIn ? (
+          <SignOutButton
+            variant="ghost"
+            className="cursor-pointer text-sm text-[var(--nav-fg-muted)] underline-offset-4 transition-colors hover:text-destructive hover:underline"
+            label={nav.signOut}
+            pendingLabel={nav.signingOut}
+          />
+        ) : (
+          <Button
+            asChild
+            variant="ghost"
+            className="text-sm text-[var(--nav-fg-muted)] underline-offset-4 transition-colors hover:text-[var(--nav-fg)] hover:underline"
+          >
+            <Link href="/auth/signin">{nav.signIn}</Link>
+          </Button>
+        )}
       </header>
 
       <div className="flex flex-1 flex-col md:flex-row">
