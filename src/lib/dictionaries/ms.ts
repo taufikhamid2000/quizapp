@@ -38,7 +38,7 @@ export const ms: Dictionary = {
   },
   signup: {
     createAccount: "Cipta akaun",
-    subtitle: "Mulakan dengan Template",
+    subtitle: "Mulakan dengan Quiz App",
     firstNamePlaceholder: "Nama pertama",
     firstNameAriaLabel: "Nama Pertama",
     lastNamePlaceholder: "Nama akhir",

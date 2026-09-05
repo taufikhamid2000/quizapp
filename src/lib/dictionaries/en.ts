@@ -38,7 +38,7 @@ export const en = {
   },
   signup: {
     createAccount: "Create an account",
-    subtitle: "Get started with Template",
+    subtitle: "Get started with Quiz App",
     firstNamePlaceholder: "First name",
     firstNameAriaLabel: "First Name",
     lastNamePlaceholder: "Last name",
