@@ -38,7 +38,17 @@ export function AuthBrandingPanel({ brand, dict }: { brand: string; dict: Dictio
         </ul>
       </div>
 
-      <p className="relative text-xs text-primary-foreground/50">{dict.footnote}</p>
+      <p className="relative text-xs text-primary-foreground/50">
+        {dict.footnote}{" "}
+        <a
+          href="https://taufik.vercel.app"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline-offset-2 hover:underline hover:text-primary-foreground/70"
+        >
+          A project by Muhammad Taufik &rarr;
+        </a>
+      </p>
     </div>
   );
 }

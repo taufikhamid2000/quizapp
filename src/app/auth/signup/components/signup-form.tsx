@@ -115,7 +115,11 @@ export default function SignUpForm({
           <p className="mb-6 text-sm text-foreground/60">{dict.signup.subtitle}</p>
 
           <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-3">
-            {error && <p className="text-sm text-destructive">{error}</p>}
+            {error && (
+              <p id="signup-form-error" role="alert" className="text-sm text-destructive">
+                {error}
+              </p>
+            )}
 
             <div className="grid grid-cols-2 gap-3">
               <div className="flex flex-col gap-1">
@@ -123,12 +127,16 @@ export default function SignUpForm({
                   {...register("firstName")}
                   type="text"
                   aria-label={dict.signup.firstNameAriaLabel}
+                  aria-invalid={errors.firstName ? true : undefined}
+                  aria-describedby={errors.firstName ? "signup-firstname-error" : undefined}
                   placeholder={dict.signup.firstNamePlaceholder}
                   disabled={isLoading}
                   className={FIELD_CLASS}
                 />
                 {errors.firstName && (
-                  <p className="text-xs text-destructive">{errors.firstName.message}</p>
+                  <p id="signup-firstname-error" role="alert" className="text-xs text-destructive">
+                    {errors.firstName.message}
+                  </p>
                 )}
               </div>
 
@@ -137,12 +145,16 @@ export default function SignUpForm({
                   {...register("lastName")}
                   type="text"
                   aria-label={dict.signup.lastNameAriaLabel}
+                  aria-invalid={errors.lastName ? true : undefined}
+                  aria-describedby={errors.lastName ? "signup-lastname-error" : undefined}
                   placeholder={dict.signup.lastNamePlaceholder}
                   disabled={isLoading}
                   className={FIELD_CLASS}
                 />
                 {errors.lastName && (
-                  <p className="text-xs text-destructive">{errors.lastName.message}</p>
+                  <p id="signup-lastname-error" role="alert" className="text-xs text-destructive">
+                    {errors.lastName.message}
+                  </p>
                 )}
               </div>
             </div>
@@ -151,21 +163,33 @@ export default function SignUpForm({
               {...register("email")}
               type="email"
               aria-label={dict.signin.emailAriaLabel}
+              aria-invalid={errors.email ? true : undefined}
+              aria-describedby={errors.email ? "signup-email-error" : error ? "signup-form-error" : undefined}
               placeholder="your@email.com"
               disabled={isLoading}
               className={FIELD_CLASS}
             />
-            {errors.email && <p className="text-sm text-destructive">{errors.email.message}</p>}
+            {errors.email && (
+              <p id="signup-email-error" role="alert" className="text-sm text-destructive">
+                {errors.email.message}
+              </p>
+            )}
 
             <PasswordInput
               registerProps={register("password")}
               ariaLabel={dict.signin.passwordAriaLabel}
+              ariaInvalid={!!errors.password}
+              ariaDescribedBy={errors.password ? "signup-password-error" : error ? "signup-form-error" : undefined}
               placeholder="••••••••"
               disabled={isLoading}
               autoComplete="new-password"
               className={FIELD_CLASS}
             />
-            {errors.password && <p className="text-sm text-destructive">{errors.password.message}</p>}
+            {errors.password && (
+              <p id="signup-password-error" role="alert" className="text-sm text-destructive">
+                {errors.password.message}
+              </p>
+            )}
 
             <button
               type="submit"

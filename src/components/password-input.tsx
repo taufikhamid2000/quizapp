@@ -29,6 +29,8 @@ export function PasswordInput({
   id,
   name,
   ariaLabel,
+  ariaInvalid,
+  ariaDescribedBy,
   placeholder,
   disabled,
   autoComplete,
@@ -38,6 +40,8 @@ export function PasswordInput({
   id?: string;
   name?: string;
   ariaLabel?: string;
+  ariaInvalid?: boolean;
+  ariaDescribedBy?: string;
   placeholder?: string;
   disabled?: boolean;
   autoComplete?: string;
@@ -54,6 +58,8 @@ export function PasswordInput({
         id={id}
         name={name}
         aria-label={ariaLabel}
+        aria-invalid={ariaInvalid || undefined}
+        aria-describedby={ariaDescribedBy}
         type={show ? "text" : "password"}
         placeholder={placeholder}
         disabled={disabled}

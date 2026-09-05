@@ -103,27 +103,43 @@ export default function SignInForm({
           <p className="mb-6 text-sm text-foreground/60">{dict.signin.subtitle}</p>
 
           <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-3">
-            {error && <p className="text-sm text-destructive">{error}</p>}
+            {error && (
+              <p id="signin-form-error" role="alert" className="text-sm text-destructive">
+                {error}
+              </p>
+            )}
 
             <input
               {...register("email")}
               type="email"
               aria-label={dict.signin.emailAriaLabel}
+              aria-invalid={errors.email ? true : undefined}
+              aria-describedby={errors.email ? "signin-email-error" : error ? "signin-form-error" : undefined}
               placeholder="your@email.com"
               disabled={isLoading}
               className={FIELD_CLASS}
             />
-            {errors.email && <p className="text-sm text-destructive">{errors.email.message}</p>}
+            {errors.email && (
+              <p id="signin-email-error" role="alert" className="text-sm text-destructive">
+                {errors.email.message}
+              </p>
+            )}
 
             <PasswordInput
               registerProps={register("password")}
               ariaLabel={dict.signin.passwordAriaLabel}
+              ariaInvalid={!!errors.password}
+              ariaDescribedBy={errors.password ? "signin-password-error" : error ? "signin-form-error" : undefined}
               placeholder="••••••••"
               disabled={isLoading}
               autoComplete="current-password"
               className={FIELD_CLASS}
             />
-            {errors.password && <p className="text-sm text-destructive">{errors.password.message}</p>}
+            {errors.password && (
+              <p id="signin-password-error" role="alert" className="text-sm text-destructive">
+                {errors.password.message}
+              </p>
+            )}
 
             <button
               type="submit"
