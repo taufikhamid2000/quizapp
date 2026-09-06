@@ -36,7 +36,31 @@ export default function SignInForm({
 }) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
+  const [isDemoLoading, setIsDemoLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // "Try the demo — no account needed": anonymous Supabase sign-in, no
+  // sample data seeding (quizapp has none yet) — just drops the visitor
+  // straight into the app.
+  const handleTryDemo = async () => {
+    setIsDemoLoading(true);
+    setError(null);
+    try {
+      const supabase = createClient();
+      const { error: demoError } = await supabase.auth.signInAnonymously();
+      if (demoError) {
+        setError(demoError.message || dict.signin.genericError);
+        return;
+      }
+      router.refresh();
+      router.push("/dashboard");
+    } catch (err) {
+      const error = err as { message?: string };
+      setError(error.message || dict.signin.genericError);
+    } finally {
+      setIsDemoLoading(false);
+    }
+  };
 
   const SignInSchema = z.object({
     email: z.string().email({ message: dict.validation.emailInvalid }),
@@ -150,6 +174,21 @@ export default function SignInForm({
               {isLoading ? dict.signin.signingIn : dict.signin.signIn}
             </button>
           </form>
+
+          <div className="my-4 flex items-center gap-3">
+            <div className="h-px flex-1 bg-border" />
+            <span className="text-xs text-foreground/40">or</span>
+            <div className="h-px flex-1 bg-border" />
+          </div>
+
+          <button
+            type="button"
+            onClick={handleTryDemo}
+            disabled={isDemoLoading || isLoading}
+            className="w-full cursor-pointer rounded-full border border-primary/40 bg-primary/5 px-5 py-2.5 text-sm font-medium text-primary transition-colors hover:bg-primary/10 disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+          >
+            {isDemoLoading ? "Starting demo..." : "Try the demo — no account needed"}
+          </button>
 
           <p className="mt-6 text-center text-sm text-foreground/60">
             {dict.signin.noAccount}{" "}
